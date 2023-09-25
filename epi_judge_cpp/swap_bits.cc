@@ -1,7 +1,19 @@
 #include "test_framework/generic_test.h"
+
 long long SwapBits(long long x, int i, int j) {
-  // TODO - you fill in here.
-  return 0;
+  
+  // If bits are equal then nothing to do.
+  if(((x >> i) & 1) == ((x >> j) & 1))
+  {
+    return x;
+  }
+
+  // From here we know that bits are different.
+  // Use XOR to swap bits:
+  // - xor any bit with 1 => reverse it
+  // - xor any bit with 0 => keeps it
+  const auto mask = (1ll << i) | (1ll << j);
+  return x ^ mask;
 }
 
 int main(int argc, char* argv[]) {
